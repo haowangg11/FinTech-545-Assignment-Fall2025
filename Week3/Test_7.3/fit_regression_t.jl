@@ -1,18 +1,6 @@
 using Optim, Distributions, LinearAlgebra
 
-"""
-    fit_regression_t(y, X)
 
-Fits a regression model with T-distributed errors:
-    y = α + X * β + ε
-    ε ~ T_ν(μ, σ)
-
-Returns:
-    - beta: [α, β1, β2, β3]
-    - errorModel.μ
-    - errorModel.σ
-    - ρ.ν (degrees of freedom)
-"""
 function fit_regression_t(y::Vector, X::Matrix)
     n, p = size(X)
     X_ = hcat(ones(n), X) 
